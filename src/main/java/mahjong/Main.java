@@ -26,6 +26,7 @@ public class Main {
             GameConfig.setDebugMode(false);
         }
 
+
         // Language selection interface
         System.out.println("\n" + "=".repeat(40));
         System.out.println("        LANGUAGE SELECTION");
@@ -39,13 +40,13 @@ public class Main {
             System.out.print("\nEnter your choice (1 or 2): ");
             
             try {
-                String input = scanner.nextLine().trim();
+                int choice = readInt();
                 
-                switch (input) {
-                    case "1":
+                switch (choice) {
+                    case 1:
                         selectedLanguage = Language.ENGLISH;
                         break;
-                    case "2":
+                    case 2:
                         selectedLanguage = Language.CHINESE;
                         break;                    
                     default:
@@ -60,8 +61,8 @@ public class Main {
                     System.out.println("✅ Language set to English!");
                     System.out.println("Welcome to Mahjong Game!");
                 } else {
-                    System.out.println("✅ 语言设置为中文！");
-                    System.out.println("欢迎来到麻将游戏！");
+                    System.out.println("✅ 語言設定為中文！");
+                    System.out.println("歡迎來到麻將遊戲！");
                 }
                   
             } catch (Exception e) {
@@ -81,5 +82,16 @@ public class Main {
 
 
         
+    }
+
+    private static int readInt(){
+        while (true) {
+            try {
+                String input = scanner.nextLine().trim();
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Invalid input! Please enter a valid number.");
+            }
+        }
     }
 }
